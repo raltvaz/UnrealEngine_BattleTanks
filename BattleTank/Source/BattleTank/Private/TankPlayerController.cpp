@@ -3,10 +3,6 @@
 #include "BattleTank.h"
 #include "TankPlayerController.h"
 
-ATank* ATankPlayerController::GetControlledTank() const {
-
-	return Cast<ATank>(GetPawn());
-}
 
 void ATankPlayerController::BeginPlay() {
 
@@ -24,5 +20,31 @@ void ATankPlayerController::BeginPlay() {
 	}
 
 	UE_LOG(LogTemp, Warning, TEXT("PlayerController Begin Play"));
+}
+
+// Called every frame
+void ATankPlayerController::Tick(float DeltaTime)
+{
+
+	Super::Tick(DeltaTime);
+	AimTowardsCrossHair();
+	UE_LOG(LogTemp, Warning, TEXT("TICK IS WORKING"));
+
+}
+
+ATank* ATankPlayerController::GetControlledTank() const {
+
+	return Cast<ATank>(GetPawn());
+}
+
+void ATankPlayerController::AimTowardsCrossHair() {
+
+	if (!GetControlledTank()) {
+		return;
+	}
+
+	//Get world location if linetrace through crosshair
+	//If it hits the landscape
+		//Tll controlled tank to aim at this point
 }
 
