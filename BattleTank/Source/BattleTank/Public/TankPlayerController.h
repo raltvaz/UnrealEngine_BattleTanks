@@ -23,4 +23,7 @@ public:
 
 	void AimTowardsCrossHair();
 
+private:
+	bool GetSightRayHitLocation(OUT FVector& HitLocation) const;
+
 };
