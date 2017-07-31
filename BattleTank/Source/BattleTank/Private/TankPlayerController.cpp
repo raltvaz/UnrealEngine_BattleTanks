@@ -47,9 +47,8 @@ void ATankPlayerController::AimTowardsCrossHair() {
 
 	if (GetSightRayHitLocation(HitLocation)) { //Has side-effect, is going to line trace
 
-		UE_LOG(LogTemp, Warning, TEXT("Hit Location: %s"), *(HitLocation.ToString()));
-
 		//Tell controlled tank to aim at this point
+		GetControlledTank()->AimAt(HitLocation);
 	}
 
 
@@ -68,7 +67,7 @@ bool ATankPlayerController::GetSightRayHitLocation(OUT FVector& HitLocation) con
 	if (GetLookDirection(ScreenLocation,LookDirection)) {
 
 		//Line-trace along that look direction, and see what we hit (up to max range)
-		FVector HitLocation;
+		//FVector HitLocation;
 		GetLookVectorHitLocation(LookDirection, HitLocation);
 	}
 
