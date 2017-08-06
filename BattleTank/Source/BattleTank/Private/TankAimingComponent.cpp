@@ -1,8 +1,10 @@
 // Fill out your copyright notice in the Description page of Project Settings.
 
 #include "BattleTank.h"
-#include "TankAimingComponent.h"
 #include "TankBarrel.h"
+#include "TankTurret.h"
+#include "TankAimingComponent.h"
+
 
 
 // Sets default values for this component's properties
@@ -17,22 +19,22 @@ UTankAimingComponent::UTankAimingComponent()
 
 
 // Called when the game starts
-void UTankAimingComponent::BeginPlay()
+/*void UTankAimingComponent::BeginPlay()
 {
 	Super::BeginPlay();
 
 	// ...
 	
-}
+}*/
 
 
 // Called every frame
-void UTankAimingComponent::TickComponent(float DeltaTime, ELevelTick TickType, FActorComponentTickFunction* ThisTickFunction)
+/*void UTankAimingComponent::TickComponent(float DeltaTime, ELevelTick TickType, FActorComponentTickFunction* ThisTickFunction)
 {
 	Super::TickComponent(DeltaTime, TickType, ThisTickFunction);
 
 	// ...
-}
+}*/
 
 void UTankAimingComponent::AimAt(FVector HitLocation, float LaunchSpeed) {
 
@@ -76,12 +78,19 @@ void UTankAimingComponent::MoveBarrelTowards(FVector AimDirection) {
 	auto DeltaRotator = AimAsRotator - BarrelRotator;
 	
 
-	Barrel->Elevate(DeltaRotator.Pitch); //TODO remove magic number
+	Barrel->Elevate(DeltaRotator.Pitch);
 
 }
 
 void UTankAimingComponent::SetBarrelReference(UTankBarrel* BarrelToSet) {
 
 	//this->Barrel = BarrelToSet;
+	if (!BarrelToSet) { return; }
 	Barrel = BarrelToSet;
+}
+
+void UTankAimingComponent::SetTurretReference(UTankTurret* TurretToSet) {
+
+	if (!TurretToSet) { return; }
+	Turret = TurretToSet;
 }
