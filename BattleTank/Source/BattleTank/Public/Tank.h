@@ -9,6 +9,7 @@
 //Foward Declarations
 class UTankBarrel; 
 class UTankAimingComponent; 
+class AProjectile;
 
 
 UCLASS()
@@ -46,6 +47,12 @@ private:
 
 	UPROPERTY(EditAnywhere, Category = Firing)
 	float LaunchSpeed = 4000.0;
+
+	UPROPERTY(EditAnywhere, Category = Setup)
+	TSubclassOf<AProjectile> ProjectileBluePrint;//UClass* ProjectileBlueprint; //Alternative http://docs.unrealengine.com/latest/INT/Programming/UnrealArchitecture/TSubclassOf
+
+	//Local barrel reference for spawning projectile
+	UTankBarrel* Barrel = nullptr;
 
 
 	
