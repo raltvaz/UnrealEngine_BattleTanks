@@ -16,8 +16,7 @@ ATank::ATank()
 
 	//No Need to protect points as added at construction
 	TankAimingComponent = CreateDefaultSubobject<UTankAimingComponent>(FName("Aiming Component"));
-	TankMovementComponent = CreateDefaultSubobject<UTankMovementComponent>(FName("Movement Component"));
-
+	
 }
 
 // Called when the game starts or when spawned
